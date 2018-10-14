@@ -14,3 +14,24 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+task taskA {
+    dependsOn 'taskB'
+    doFirst {
+        println 'task A'
+    }
+}
+
+task taskB {
+    dependsOn 'taskC'
+    doFirst {
+        println 'task B'
+    }
+}
+
+task taskC {
+    dependsOn 'taskA'
+    doFirst {
+        println 'task C'
+    }
+}
